@@ -1,0 +1,8 @@
+<div *ngIf="control?.errors && submitted">
+    <div>
+      <div *ngIf="control.errors?.['required']">{{messages['required']}}</div>
+      <div *ngIf="control.errors?.['minlength']">{{messages['minlength']}}</div>
+      <div *ngIf="control.errors?.['maxlength']">{{messages['maxlength']}}</div>
+      <div *ngIf="control.errors?.['email']">{{messages['email']}}</div>
+    </div>
+  </div>

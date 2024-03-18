@@ -26,19 +26,17 @@
           #username="ngModel"
           [ngClass]="{ 'is-invalid': f.submitted && username.invalid }"
         />
-        @if (username.errors && f.submitted) {
-            <div class="invalid-feedback">
-              @if (username.errors['required']) {
-              <div>Username is required</div>
-              }
-              @if (username.errors['minlength']) {
-              <div>Username must be at least 3 characters</div>
-              }
-              @if (username.errors['maxlength']) {
-              <div>Username must be at most 20 characters</div>
-              }
-            </div>
-          }
+        <app-validation-error
+          class="invalid-feedback"
+          [control]="username"
+          [messages]="{
+            required: 'Username is required...',
+            minlength: 'Username must be at least 3 characters...',
+            maxlength: 'Username must be at most 20 characters'
+          }"
+          [submitted]="f.submitted"
+        >
+        </app-validation-error>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
@@ -51,7 +49,19 @@
           email
           autocomplete="off"
           [(ngModel)]="form.email"
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
         />
+        <app-validation-error
+          class="invalid-feedback"
+          [control]="email"
+          [messages]="{
+            required: 'Email is required',
+            email: 'Email must be a valid email address'
+          }"
+          [submitted]="f.submitted"
+        >
+        </app-validation-error>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
