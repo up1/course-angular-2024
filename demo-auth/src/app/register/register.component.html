@@ -1,57 +1,73 @@
 <div class="col-md-12">
-    <div class="card card-container">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <form
-        name="form"
-        novalidate
-        (ngSubmit)="onSubmit()"
-      >
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            id="username"
-            name="username"
-            required
-            minlength="3"
-            maxlength="20"
-            autocomplete="off"
-            [(ngModel)]="form.username"
-          />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            required
-            email
-            autocomplete="off"
-            [(ngModel)]="form.email"
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            required
-            minlength="6"
-            [(ngModel)]="form.password"
-          />
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary btn-block align-right">Sign Up</button>
-        </div>
-      </form>
-    </div>
+  <div class="card card-container">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    />
+    <form
+      name="form"
+      novalidate
+      #f="ngForm"
+      (ngSubmit)="f.form.valid && onSubmit()"
+    >
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          required
+          minlength="3"
+          maxlength="20"
+          autocomplete="off"
+          [(ngModel)]="form.username"
+          #username="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && username.invalid }"
+        />
+        @if (username.errors && f.submitted) {
+            <div class="invalid-feedback">
+              @if (username.errors['required']) {
+              <div>Username is required</div>
+              }
+              @if (username.errors['minlength']) {
+              <div>Username must be at least 3 characters</div>
+              }
+              @if (username.errors['maxlength']) {
+              <div>Username must be at most 20 characters</div>
+              }
+            </div>
+          }
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          required
+          email
+          autocomplete="off"
+          [(ngModel)]="form.email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          required
+          minlength="6"
+          [(ngModel)]="form.password"
+        />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block align-right">Sign Up</button>
+      </div>
+    </form>
   </div>
+</div>

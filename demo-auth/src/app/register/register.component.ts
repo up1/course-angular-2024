@@ -7,7 +7,7 @@ import { UserForm } from "../models/user-form";
   styleUrl: "./register.component.css",
 })
 export class RegisterComponent {
-  form: UserForm = new UserForm();
+  form = new UserForm();
 
   onSubmit() {
     const { username, email, password } = this.form;
