@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { UserForm } from "../models/user-form";
 
 @Component({
   selector: "app-register",
@@ -6,11 +7,8 @@ import { Component } from "@angular/core";
   styleUrl: "./register.component.css",
 })
 export class RegisterComponent {
-  form: any = {
-    username: null,
-    email: null,
-    password: null,
-  };
+  form: UserForm = new UserForm();
+
   onSubmit() {
     const { username, email, password } = this.form;
 
