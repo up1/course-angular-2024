@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
-import { UserForm } from "../models/user-form";
-import { AuthService } from "../services/auth.service";
+import { UserForm } from "@app/models/user-form";
+import { AuthService } from "@app/services/auth.service";
 import { MatDialog } from "@angular/material/dialog";
-import { ErrorDialogComponent } from "../error-dialog/error-dialog.component";
-import { StorageService } from "../services/storage.service";
+import { ErrorDialogComponent } from "@app/error-dialog/error-dialog.component";
+import { StorageService } from "@app/services/storage.service";
 
 @Component({
   selector: "app-register",
