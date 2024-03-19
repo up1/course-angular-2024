@@ -11,6 +11,7 @@ import { ValidationErrorComponent } from './validation-error/validation-error.co
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
     RegisterComponent,
     LoginComponent,
     ValidationErrorComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    ConvertToSpacesPipe
   ],
   imports: [
     BrowserModule,
