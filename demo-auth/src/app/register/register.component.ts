@@ -22,7 +22,7 @@ export class RegisterComponent {
   onSubmit() {
     const { username, email, password } = this.form;
 
-    this.storageService.saveUser({ username, email });
+    this.storageService.saveUser({ username, email, password: "***" });
 
     console.log("Username:", username);
     console.log("Email:", email);
