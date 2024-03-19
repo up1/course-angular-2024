@@ -10,6 +10,7 @@ export class DataService {
   messages$ = this.messageSubject.asObservable();
 
   addNewMessage(newMessage: string) {
+    console.log('newMessage', newMessage);
     this.messageSubject.next([...this.messageSubject.value, newMessage]);
   }
 }

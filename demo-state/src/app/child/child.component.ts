@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
+import { CommonModule, NgFor } from "@angular/common";
+import { Component } from "@angular/core";
+import { DataService } from "../data.service";
 
 @Component({
-  selector: 'app-child',
+  selector: "app-child",
   standalone: true,
-  imports: [],
-  templateUrl: './child.component.html',
-  styleUrl: './child.component.css'
+  imports: [CommonModule],
+  template: `
+    <input type="text" #data />
+    <button (click)="addNewMessage(data.value); data.value = ''">Update</button>
+  `,
 })
 export class ChildComponent {
-
+  constructor(private dataService: DataService) {}
+  
+  addNewMessage(newMessage: string) {
+    this.dataService.addNewMessage(newMessage);
+  }
 }
