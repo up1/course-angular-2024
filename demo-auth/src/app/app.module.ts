@@ -8,7 +8,9 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ValidationErrorComponent } from './validation-error/validation-error.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    ValidationErrorComponent
+    ValidationErrorComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

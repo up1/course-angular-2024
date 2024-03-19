@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { UserForm } from "../models/user-form";
 import { AuthService } from "../services/auth.service";
+import { MatDialog } from "@angular/material/dialog";
+import { ErrorDialogComponent } from "../error-dialog/error-dialog.component";
 
 @Component({
   selector: "app-register",
@@ -10,7 +12,7 @@ import { AuthService } from "../services/auth.service";
 export class RegisterComponent {
   form = new UserForm();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private dialog: MatDialog) {}
 
   onSubmit() {
     const { username, email, password } = this.form;
@@ -25,6 +27,9 @@ export class RegisterComponent {
       },
       error: err => {
         console.error(err);
+        this.dialog.open(ErrorDialogComponent, { 
+          data: { message: err.message }
+        });
       }
     });
   }
