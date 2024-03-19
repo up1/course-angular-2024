@@ -47,7 +47,7 @@
           name="email"
           required
           email
-          autocomplete="off"
+          autocomplete="on"
           [(ngModel)]="form.email"
           #email="ngModel"
           [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
