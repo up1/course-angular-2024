@@ -16,8 +16,6 @@ export class ParentComponent {
   messages: string[] = [];
 
   constructor(private dataService: DataService) {
-    this.dataService.messages$.subscribe((currentMessages) => {
-      this.messages = currentMessages;
-    });
+    this.messages = this.dataService.data().messages;
   }
 }
